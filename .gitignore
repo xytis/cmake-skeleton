@@ -1,0 +1,7 @@
+#Hidden files and editor junk
+.*
+
+#Build and bin dirs
+build/
+bin/
+

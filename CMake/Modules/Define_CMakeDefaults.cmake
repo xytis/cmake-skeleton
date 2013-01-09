@@ -14,10 +14,12 @@ SET(CMAKE_INCLUDE_DIRECTORIES_PROJECT_BEFORE ON)
 # since cmake 2.4.0
 SET(CMAKE_COLOR_MAKEFILE ON)
 
-# Set the default build type to release with debug info
+# Set the default build type to debug
 IF(NOT CMAKE_CONFIGURATION_TYPES AND NOT CMAKE_BUILD_TYPE)
-  SET(CMAKE_BUILD_TYPE DEBUG CACHE STRING "Choose the type of build, options are: NONE DEBUG RELEASE RelWithDebInfo MinSizeRel.")
+  SET(CMAKE_BUILD_TYPE "Debug" CACHE STRING "Choose the type of build, options are: None (CMAKE_CXX_FLAGS used) Debug Release RelWithDebInfo MinSizeRel.")
 ENDIF(NOT CMAKE_CONFIGURATION_TYPES AND NOT CMAKE_BUILD_TYPE) 
+
+SET(CMAKE_DEBUG_POSTFIX "_d")
 
 IF(CMAKE_BUILD_TYPE)
   SET(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BUILD_TYPE})

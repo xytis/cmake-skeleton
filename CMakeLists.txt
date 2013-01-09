@@ -1,5 +1,5 @@
 
-CMAKE_MINIMUM_REQUIRED(VERSION 2.8)
+CMAKE_MINIMUM_REQUIRED(VERSION 2.8.3)
 
 # See http://git.libssh.org/projects/libssh.git/tree/ for example of a good project configuration.
 
@@ -35,9 +35,13 @@ MACRO_ENSURE_OUT_OF_SOURCE_BUILD("${PROJECT_NAME}  requires an out of source bui
 # Another macro used in this project to add sources efficiently.
 INCLUDE(Macro_AddSources)
 
+INCLUDE ( Setup_OGRE )
+
 FIND_PACKAGE ( SDL REQUIRED )
 FIND_PACKAGE ( SDL_image REQUIRED )
 FIND_PACKAGE ( SDL_ttf REQUIRED )
+
+#Add aditional components.
 FIND_PACKAGE ( Boost COMPONENTS serialization system filesystem REQUIRED )
 
 
@@ -46,7 +50,7 @@ MESSAGE(STATUS "Current build type flags: ${CMAKE_CXX_FLAGS_${CMAKE_BUILD_TYPE}}
 
 MESSAGE(STATUS "Configuring application ${APPLICATION_NAME}")
 
-MACRO_PREPARE_SOURCES(SRCS)
+MACRO_PREPARE_SOURCES(PROJECT_SOURCES)
 
 ADD_SUBDIRECTORY( src )
 
@@ -59,7 +63,7 @@ INCLUDE_DIRECTORIES(
 
 ADD_EXECUTABLE(
     ${EXECUTABLE_NAME}
-    ${SRCS}
+    ${PROJECT_SOURCES}
 )
 
 TARGET_LINK_LIBRARIES(
@@ -67,5 +71,8 @@ TARGET_LINK_LIBRARIES(
     ${SDL_LIBRARY}
     ${SDLIMAGE_LIBRARY}
     ${SDLTTF_LIBRARY}
+    ${Boost_LIBRARIES}
+    ${OGRE_LIBRARIES}
 )
 
+INCLUDE( Action_InstallOGRE )
