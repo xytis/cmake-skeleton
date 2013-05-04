@@ -2,6 +2,6 @@
 .*
 
 #Build and bin dirs
-build/
+[B|b]uild/
 bin/
 
