@@ -29,3 +29,9 @@ If you want to update template:
     
     git pull template master
 
+
+
+.. image:: https://d2weczhvl823v0.cloudfront.net/xytis/cmake-skeleton/trend.png
+   :alt: Bitdeli badge
+   :target: https://bitdeli.com/free
+
